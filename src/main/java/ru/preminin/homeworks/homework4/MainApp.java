@@ -51,7 +51,7 @@ public class MainApp {
     public static int[] arrayOfMultiple(int number, int[] array) {
         System.out.println(Arrays.toString(array));
         for (int i = 0; i < array.length; i++) {
-            array[i] *= number;
+            array[i] += number;
         }
         return array;
     }
