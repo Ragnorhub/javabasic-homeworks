@@ -13,6 +13,7 @@ public class MainApp {
         reverseArray(randomArray());
         arrayIsSorted(randomArray(), (random(5) > 2));
         arrayEqualiyPoint(randomArray());
+        sumOfArrays(randomTwoDimensionsArray(3));
     }
 
     public static int random(int range) {
@@ -140,6 +141,34 @@ public class MainApp {
         if (counter == arr.length) {
             System.out.println("В массиве отсутствует точка равенства правой и левой части массива.");
         }
+    }
+    public static int[][] randomTwoDimensionsArray(int deepOfArray) {
+        int[][] array = new int[deepOfArray][random(3) + 3];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                array[i][j] = random(199) - 100;
+            }
+        }
+        return array;
+    }
+    public static int[] sumOfArrays(int[][] array) {
+        System.out.println("Массивы для суммирования: " + Arrays.deepToString(array));
+        int deepArray = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i].length > deepArray) {
+                    deepArray = array[i].length;
+                }
+            }
+        }
+        int[] newArray = new int[deepArray];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                newArray[j] += array[i][j];
+            }
+        }
+        System.out.println("Суммирующий массив: " + Arrays.toString(newArray));
+        return newArray;
     }
 }
 
