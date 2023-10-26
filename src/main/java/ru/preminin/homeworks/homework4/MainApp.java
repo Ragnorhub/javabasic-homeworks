@@ -5,13 +5,12 @@ import java.util.Arrays;
 public class MainApp {
     public static void main(String[] args) {
         stringRepeater(5,"Hello");
-        System.out.println(Arrays.toString(randomArray()));
-        sumIfFive(randomArray());
+        sumIfHigherThanFive(randomArray());
         System.out.println(Arrays.toString(arrayOfNumber(5, randomArray())));
         System.out.println(Arrays.toString(arrayOfMultiple(5, randomArray())));
         comparingArrayParts(randomArray());
         reverseArray(randomArray());
-        arrayIsSorted(randomArray(), (random(5) > 2));
+        isArraySorted(randomArray(), (random(5) > 2));
         arrayEqualiyPoint(randomArray());
         sumOfArrays(randomTwoDimensionsArray(3));
     }
@@ -21,7 +20,7 @@ public class MainApp {
     }
 
     public static int[] randomArray() {
-        int[] array = new int[random(15)];
+        int[] array = new int[random(8) + 2];
         for (int i = 0; i < array.length; i++) {
             array[i] = random(20);
         }
@@ -34,7 +33,7 @@ public class MainApp {
         }
     }
 
-    public static void sumIfFive(int[] array) {
+    public static void sumIfHigherThanFive(int[] array) {
         int sum = 0;
         for (int num : array) {
             if (num > 5) {
@@ -84,41 +83,22 @@ public class MainApp {
         System.out.println(Arrays.toString(array));
     }
 
-    public static void arrayIsSorted(int[] array, boolean isAscending) {
+    public static void isArraySorted(int[] array, boolean isAscending) {
         System.out.println("Массив: " + Arrays.toString(array));
         if (array.length <= 1) {
             System.out.println("Массив состоит из одного элемента, или массив пустой");
             return;
         }
-        if (isAscending) {
-            int counter = 0;
-            for (int i = 0; i < array.length - 1; i++) {
-                if (array[i] >= array[i + 1]) {
-                    System.out.println("Массив не восходящий.");
-                    break;
-                }
-                counter++;
-                if (counter == array.length - 1) {
-                    System.out.println("Массив восходящий");
-                }
-            }
-        } else {
-            int counter = 0;
-            for (int i = 0; i < array.length - 1; i++) {
-                if (array[i] <= array[i + 1]) {
-                    System.out.println("Массив не нисходящий");
-                    break;
-                }
-                counter++;
-                if (counter == array.length - 1) {
-                    System.out.println("Массив нисходящий");
-                }
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] >= array[i + 1] == isAscending) {
+                System.out.println("Массив не прошел проверку на isAscending: " + isAscending);
+                return;
             }
         }
+        System.out.println("Массив прошел проверку на isAscending: " + isAscending);
     }
 
     public static void arrayEqualiyPoint(int[] arr) {
-        int counter = 0;
         System.out.println("Массив: " + Arrays.toString(arr));
         if (arr.length < 2) {
             System.out.println("В массиве недосаточно элементов для сравнения.");
@@ -134,14 +114,12 @@ public class MainApp {
             if (sumLeft == sumRight) {
                 System.out.println("В массиве присутствует точка равенства правой и левой части массива. " +
                         "Она находится между " + arr[i] + " и " + arr[i + 1]);
-                break;
+                return;
             }
-            counter++;
         }
-        if (counter == arr.length) {
-            System.out.println("В массиве отсутствует точка равенства правой и левой части массива.");
-        }
+        System.out.println("В массиве отсутствует точка равенства правой и левой части массива.");
     }
+
     public static int[][] randomTwoDimensionsArray(int deepOfArray) {
         int[][] array = new int[deepOfArray][random(3) + 3];
         for (int i = 0; i < array.length; i++) {
@@ -151,17 +129,16 @@ public class MainApp {
         }
         return array;
     }
+
     public static int[] sumOfArrays(int[][] array) {
         System.out.println("Массивы для суммирования: " + Arrays.deepToString(array));
-        int deepArray = 0;
+        int maxArrayLength = 0;
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                if (array[i].length > deepArray) {
-                    deepArray = array[i].length;
-                }
+            if (array[i].length > maxArrayLength) {
+                maxArrayLength = array[i].length;
             }
         }
-        int[] newArray = new int[deepArray];
+        int[] newArray = new int[maxArrayLength];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 newArray[j] += array[i][j];
@@ -171,4 +148,3 @@ public class MainApp {
         return newArray;
     }
 }
-
