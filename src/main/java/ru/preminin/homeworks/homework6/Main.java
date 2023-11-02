@@ -20,7 +20,7 @@ public class Main {
             }
         }
 
-        Box box = new Box(5,7,8,"Чёрный", true,true, "");
+        Box box = new Box(5,7,8,"Чёрный", true, "пусто");
         box.info();
         box.setThingInBox("Стакан");
         box.setColor("Зелёный");
