@@ -5,13 +5,12 @@ public class Box {
     private final int width;
     private final int height;
     private String color;
-    private boolean IsOpen;
+    private boolean isOpen;
     private String thingInBox;
 
     public void getThingFromBox() {
-        if (!IsOpen) {
+        if (!isOpen) {
             System.out.println("Коробка закрыта.Что бы что то достать из неё, коробку надо открыть\n");
-            return;
         }
         if (thingInBox.equals("пусто")) {
             System.out.println("В коробке пусто. Ничего не достать.\n");
@@ -22,14 +21,12 @@ public class Box {
     }
 
     public void setThingInBox(String thingInBox) {
-        if (!IsOpen) {
+        if (!isOpen) {
             System.out.println("Коробка закрыта.Что бы что то положить в неё, коробку надо открыть\n");
-            return;
         }
-        if (!thingInBox.equals("пусто")) {
-            this.thingInBox = thingInBox;
+        if (this.thingInBox.equals("пусто")) {
             System.out.println("Положили в коробку: " + thingInBox + "\n");
-            return;
+            this.thingInBox = thingInBox;
         } else {
             System.out.println("В коробке уже находится: " + this.thingInBox + " Новое не положить\n");
         }
@@ -40,21 +37,21 @@ public class Box {
         this.width = width;
         this.height = height;
         this.color = color;
-        this.IsOpen = IsOpen;
+        this.isOpen = IsOpen;
         this.thingInBox = thingInBox;
     }
 
     public boolean isBoxIsOpen() {
-        return IsOpen;
+        return isOpen;
     }
 
     public void switchBoxOpenClose() {
-        if (IsOpen) {
-            IsOpen = false;
+        if (isOpen) {
+            isOpen = false;
             System.out.println("Закрыли коробку\n");
         } else {
+            isOpen = true;
             System.out.println("Открыли коробку\n");
-            IsOpen = true;
         }
     }
 
@@ -81,16 +78,15 @@ public class Box {
     public void info() {
         System.out.println("Размеры коробки: Длина: " + length + " Ширина: " + width + " Высота: " + height);
         System.out.println("Цвет коробки: " + color);
-        if (IsOpen) {
+        if (isOpen) {
             System.out.println("Коробка открыта");
         } else {
             System.out.println("Коробка закрыта");
         }
         if (thingInBox.equals("пусто")) {
-            System.out.println("В коробке пусто");
+            System.out.println("В коробке пусто\n");
         } else {
-            System.out.println("В коробке находится: " + thingInBox);
+            System.out.println("В коробке находится: " + thingInBox + "\n");
         }
-        System.out.println();
     }
 }
