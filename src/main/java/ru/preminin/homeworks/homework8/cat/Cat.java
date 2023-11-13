@@ -4,7 +4,7 @@ import ru.preminin.homeworks.homework8.plate.Plate;
 
 public class Cat {
     private final String name;
-    boolean isSatiety;
+    private boolean isSatiety;
     private final int appetite;
 
     public Cat(String name, int appetite) {
