@@ -27,8 +27,11 @@ public class Main {
         for (Cat cat : cats) {
             cat.eat(plate);
         }
-        plate.addFoodToAPlate(50);
+        plate.addFood(50);
         cats[3].eat(plate);
-        plate.addFoodToAPlate(70);
+        plate.addFood(70);
+        for (Cat cat : cats) {
+            cat.eat(plate);
+        }
     }
 }

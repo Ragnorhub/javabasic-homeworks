@@ -14,10 +14,12 @@ public class Cat {
     }
 
     public void eat(Plate plate) {
-        System.out.println("Кот " + name + " начал кушать.");
-        isSatiety = plate.decreaseFoodToAPlate(appetite);
+        if (!isSatiety) {
+            System.out.println("Кот " + name + " начал кушать.");
+            isSatiety = plate.decreaseFood(appetite);
+        }
         if (isSatiety) {
-            System.out.println("Кот " + name + " теперь сытый.\n");
+            System.out.println("Кот " + name + " сытый.\n");
         }
     }
 }
