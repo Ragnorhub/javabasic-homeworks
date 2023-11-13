@@ -1,8 +1,8 @@
 package ru.preminin.homeworks.homework8.plate;
 
 public class Plate {
-    int maxFoodAmount;
-    int currentAmountOfFood;
+    private final int maxFoodAmount;
+    private int currentAmountOfFood;
 
     public Plate(int maxFoodAmount, int currentAmountOfFood) {
         this.maxFoodAmount = maxFoodAmount;

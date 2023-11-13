@@ -19,16 +19,16 @@ public class Main {
     public static void main(String[] args) {
         Plate plate = new Plate(100, 100);
         Cat[] cats = {
-                new Cat("Барсик"),
-                new Cat("Мурка"),
-                new Cat("Дымка"),
-                new Cat("Кефир")
+                new Cat("Барсик",40),
+                new Cat("Мурка", 20),
+                new Cat("Дымка", 20),
+                new Cat("Кефир", 35)
         };
         for (Cat cat : cats) {
             cat.eat(plate);
         }
         plate.addFoodToAPlate(50);
         cats[3].eat(plate);
-        plate.addFoodToAPlate(60);
+        plate.addFoodToAPlate(70);
     }
 }
