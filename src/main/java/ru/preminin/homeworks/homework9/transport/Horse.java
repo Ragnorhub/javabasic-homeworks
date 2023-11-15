@@ -1,4 +1,22 @@
 package ru.preminin.homeworks.homework9.transport;
 
-public class Horse {
+import ru.preminin.homeworks.homework9.enums.terrain;
+
+public class Horse implements Location {
+    private int endurance = 100;
+
+    @Override
+    public boolean run(int distance, terrain terrain) {
+        if (terrain.equals(terrain.Swamp)) {
+            System.out.println("The horse does not walk in the " + terrain + "\n");
+            return false;
+        }
+        if (endurance - distance >= 0) {
+            endurance -= distance;
+            System.out.println("The Horse walked " + distance + " km through " + terrain + "\n");
+            return true;
+        }
+        System.out.println("The horse will not have enough stamina\n");
+        return false;
+    }
 }
