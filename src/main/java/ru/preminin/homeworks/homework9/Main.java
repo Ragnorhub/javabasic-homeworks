@@ -3,6 +3,7 @@ package ru.preminin.homeworks.homework9;
 import ru.preminin.homeworks.homework9.enums.transport;
 import ru.preminin.homeworks.homework9.human.Human;
 import ru.preminin.homeworks.homework9.enums.terrain;
+import ru.preminin.homeworks.homework9.transport.*;
 
 /**
  * Описание/Пошаговая инструкция выполнения домашнего задания:
@@ -21,20 +22,72 @@ import ru.preminin.homeworks.homework9.enums.terrain;
 public class Main {
     public static void main(String[] args) {
         Human human = new Human("Shepard");
+
+        System.out.println(human.getCurrentTransport());
         human.info();
-        human.takeATransport(transport.Horse);
+        human.takeATransport(transport.HORSE);
+        human.info();
+        run(6, terrain.SWAMP, human);
+        human.getOffTheTransport();
+        human.info();
+        run(400, terrain.DEEPFOREST, human);
+        run(48, terrain.DEEPFOREST, human);
+        human.info();
+        human.takeATransport(transport.BICYCLE);
+        run(4, terrain.DEEPFOREST, human);
+        human.info();
+    }
+
+    public static boolean run(int distance, terrain terrain, Human human) {
+        switch (human.getCurrentTransport()) {
+            case "HORSE":
+                new Horse().move(distance, terrain);
+                return true;
+            case "BICYCLE":
+                new Bicycle().move(distance, terrain, human);
+                return true;
+            case "CAR":
+                new Car().move(distance, terrain);
+                return true;
+            case "ROVER":
+                new Rover().move(distance, terrain);
+                return true;
+            case "LEGS":
+                new Legs().move(distance, terrain, human);
+                return true;
+        }
+        return false;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*Human human = new Human("Shepard");
+    Horse horse = new Horse();
+        human.info();
+        human.takeATransport(transport.HORSE);
         human.info();
         human.getOffTheTransport();
-        human.doIt(2, terrain.Swamp);
-        human.takeATransport(transport.Horse);
-        human.doIt(2, terrain.Swamp);
+        human.doIt(2, terrain.SWAMP);
+        human.takeATransport(transport.HORSE);
+        human.doIt(2, terrain.SWAMP);
         human.info();
-        human.takeATransport(transport.Bicycle);
-        human.doIt(20, terrain.Plain);
+        human.takeATransport(transport.BICICLE);
+        human.doIt(20, terrain.PLAIN);
         human.info();
-        human.doIt(2, terrain.Swamp);
-        human.takeATransport(transport.Car);
-        human.doIt(2, terrain.Swamp);
-        human.doIt(2, terrain.DeepForest);
-    }
+        human.doIt(2, terrain.SWAMP);
+        human.takeATransport(transport.CAR);
+    run(2, terrain.SWAMP);
+        human.doIt(2, terrain.DEEPFOREST);*/
+
+
 }

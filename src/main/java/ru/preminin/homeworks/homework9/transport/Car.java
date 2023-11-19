@@ -1,13 +1,14 @@
 package ru.preminin.homeworks.homework9.transport;
 
 import ru.preminin.homeworks.homework9.enums.terrain;
+import ru.preminin.homeworks.homework9.human.Human;
 
-public class Car implements Location {
+public class Car implements Transport {
     private int gasoline = 100;
 
     @Override
-    public boolean run(int distance, terrain terrain) {
-        if (terrain.equals(terrain.Swamp) || terrain.equals(terrain.DeepForest)) {
+    public boolean move(int distance, terrain terrain) {
+        if (terrain == terrain.SWAMP || terrain == terrain.DEEPFOREST) {
             System.out.println("The car will not pass through " + terrain + "\n");
             return false;
         }
