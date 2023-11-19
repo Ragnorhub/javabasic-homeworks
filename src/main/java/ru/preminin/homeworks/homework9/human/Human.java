@@ -5,12 +5,12 @@ import ru.preminin.homeworks.homework9.enums.transport;
 public class Human{
 
     private final String name;
-    private String currentTransport;
+    private transport currentTransport;
     private int endurance;
 
     public Human(String name) {
         this.name = name;
-        this.currentTransport = "LEGS";
+        this.currentTransport = transport.LEGS;
         endurance = 100;
     }
 
@@ -31,13 +31,13 @@ public class Human{
     }
 
     public void takeATransport(transport transport) {
-        currentTransport = String.valueOf(transport);
+        currentTransport = transport;
     }
 
     public void getOffTheTransport() {
-        currentTransport = "LEGS";
+        currentTransport = transport.LEGS;
     }
     public String getCurrentTransport() {
-        return currentTransport;
+        return String.valueOf(currentTransport);
     }
 }
