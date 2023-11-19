@@ -4,7 +4,7 @@ import ru.preminin.homeworks.homework9.enums.Terrain;
 import ru.preminin.homeworks.homework9.human.Human;
 
 public class Horse implements Transport {
-    Human driver;
+    private Human driver;
     private int endurance = 100;
 
     @Override

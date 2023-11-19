@@ -27,44 +27,14 @@ public class Main {
         human.info();
         human.takeATransport(Transport.HORSE);
         human.info();
-        run(6, Terrain.SWAMP, human);
-        human.getOffTheTransport();
+        human.move(6, Terrain.SWAMP, human);
+        human.getOffTheTransport(human);
         human.info();
-        run(400, Terrain.DEEPFOREST, human);
-        run(48, Terrain.DEEPFOREST, human);
+        human.move(400, Terrain.DEEPFOREST, human);
+        human.move(48, Terrain.DEEPFOREST, human);
         human.info();
         human.takeATransport(Transport.BICYCLE);
-        run(4, Terrain.PLAIN, human);
+        human.move(4, Terrain.PLAIN, human);
         human.info();
-    }
-
-    public static boolean run(int distance, Terrain terrain, Human human) {
-        switch (human.getCurrentTransport()) {
-            case "HORSE":
-                Horse horse = new Horse();
-                horse.setDriver(human);
-                horse.move(distance, terrain);
-                return true;
-            case "BICYCLE":
-                Bicycle bicycle = new Bicycle();
-                bicycle.setDriver(human);
-                bicycle.move(distance, terrain);
-                return true;
-            case "CAR":
-                Car car = new Car();
-                car.setDriver(human);
-                car.move(distance, terrain);
-                return true;
-            case "ROVER":
-                Rover rover =new Rover();
-                rover.setDriver(human);
-                rover.move(distance, terrain);
-                return true;
-            case "LEGS":
-                Legs legs = new Legs();
-                legs.move(distance, terrain, human);
-                return true;
-        }
-        return false;
     }
 }

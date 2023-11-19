@@ -4,7 +4,7 @@ import ru.preminin.homeworks.homework9.enums.Terrain;
 import ru.preminin.homeworks.homework9.human.Human;
 
 public class Bicycle implements Transport {
-    Human driver;
+    private Human driver;
     @Override
     public boolean move(int distance, Terrain terrain) {
         if (terrain == terrain.SWAMP) {
