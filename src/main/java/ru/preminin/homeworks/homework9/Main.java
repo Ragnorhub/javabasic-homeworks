@@ -67,36 +67,4 @@ public class Main {
         }
         return false;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*Human human = new Human("Shepard");
-    Horse horse = new Horse();
-        human.info();
-        human.takeATransport(Transport.HORSE);
-        human.info();
-        human.getOffTheTransport();
-        human.doIt(2, Terrain.SWAMP);
-        human.takeATransport(Transport.HORSE);
-        human.doIt(2, Terrain.SWAMP);
-        human.info();
-        human.takeATransport(Transport.BICICLE);
-        human.doIt(20, Terrain.PLAIN);
-        human.info();
-        human.doIt(2, Terrain.SWAMP);
-        human.takeATransport(Transport.CAR);
-    run(2, Terrain.SWAMP);
-        human.doIt(2, Terrain.DEEPFOREST);*/
-
-
 }

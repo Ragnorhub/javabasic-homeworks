@@ -19,6 +19,7 @@ public class Bicycle implements Transport {
         System.out.println("Not enough stamina to drive");
         return false;
     }
+    @Override
     public void setDriver(Human human) {
         this.driver = human;
     }
