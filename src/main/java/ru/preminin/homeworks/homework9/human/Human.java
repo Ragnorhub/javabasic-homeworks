@@ -1,16 +1,16 @@
 package ru.preminin.homeworks.homework9.human;
 
-import ru.preminin.homeworks.homework9.enums.transport;
+import ru.preminin.homeworks.homework9.enums.Transport;
 
 public class Human{
 
     private final String name;
-    private transport currentTransport;
+    private Transport currentTransport;
     private int endurance;
 
     public Human(String name) {
         this.name = name;
-        this.currentTransport = transport.LEGS;
+        this.currentTransport = Transport.LEGS;
         endurance = 100;
     }
 
@@ -30,12 +30,12 @@ public class Human{
         System.out.println("Name: " + name + "\nTransport: " + currentTransport + "\nEndurance: " + endurance + "\n");
     }
 
-    public void takeATransport(transport transport) {
+    public void takeATransport(Transport transport) {
         currentTransport = transport;
     }
 
     public void getOffTheTransport() {
-        currentTransport = transport.LEGS;
+        currentTransport = Transport.LEGS;
     }
     public String getCurrentTransport() {
         return String.valueOf(currentTransport);

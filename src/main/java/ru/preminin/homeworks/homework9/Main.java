@@ -1,8 +1,8 @@
 package ru.preminin.homeworks.homework9;
 
-import ru.preminin.homeworks.homework9.enums.transport;
+import ru.preminin.homeworks.homework9.enums.Terrain;
+import ru.preminin.homeworks.homework9.enums.Transport;
 import ru.preminin.homeworks.homework9.human.Human;
-import ru.preminin.homeworks.homework9.enums.terrain;
 import ru.preminin.homeworks.homework9.transport.*;
 
 /**
@@ -25,35 +25,44 @@ public class Main {
 
         System.out.println(human.getCurrentTransport());
         human.info();
-        human.takeATransport(transport.HORSE);
+        human.takeATransport(Transport.HORSE);
         human.info();
-        run(6, terrain.SWAMP, human);
+        run(6, Terrain.SWAMP, human);
         human.getOffTheTransport();
         human.info();
-        run(400, terrain.DEEPFOREST, human);
-        run(48, terrain.DEEPFOREST, human);
+        run(400, Terrain.DEEPFOREST, human);
+        run(48, Terrain.DEEPFOREST, human);
         human.info();
-        human.takeATransport(transport.BICYCLE);
-        run(4, terrain.DEEPFOREST, human);
+        human.takeATransport(Transport.BICYCLE);
+        run(4, Terrain.PLAIN, human);
         human.info();
     }
 
-    public static boolean run(int distance, terrain terrain, Human human) {
+    public static boolean run(int distance, Terrain terrain, Human human) {
         switch (human.getCurrentTransport()) {
             case "HORSE":
-                new Horse().move(distance, terrain);
+                Horse horse = new Horse();
+                horse.setDriver(human);
+                horse.move(distance, terrain);
                 return true;
             case "BICYCLE":
-                new Bicycle().move(distance, terrain, human);
+                Bicycle bicycle = new Bicycle();
+                bicycle.setDriver(human);
+                bicycle.move(distance, terrain);
                 return true;
             case "CAR":
-                new Car().move(distance, terrain);
+                Car car = new Car();
+                car.setDriver(human);
+                car.move(distance, terrain);
                 return true;
             case "ROVER":
-                new Rover().move(distance, terrain);
+                Rover rover =new Rover();
+                rover.setDriver(human);
+                rover.move(distance, terrain);
                 return true;
             case "LEGS":
-                new Legs().move(distance, terrain, human);
+                Legs legs = new Legs();
+                legs.move(distance, terrain, human);
                 return true;
         }
         return false;
@@ -74,20 +83,20 @@ public class Main {
     /*Human human = new Human("Shepard");
     Horse horse = new Horse();
         human.info();
-        human.takeATransport(transport.HORSE);
+        human.takeATransport(Transport.HORSE);
         human.info();
         human.getOffTheTransport();
-        human.doIt(2, terrain.SWAMP);
-        human.takeATransport(transport.HORSE);
-        human.doIt(2, terrain.SWAMP);
+        human.doIt(2, Terrain.SWAMP);
+        human.takeATransport(Transport.HORSE);
+        human.doIt(2, Terrain.SWAMP);
         human.info();
-        human.takeATransport(transport.BICICLE);
-        human.doIt(20, terrain.PLAIN);
+        human.takeATransport(Transport.BICICLE);
+        human.doIt(20, Terrain.PLAIN);
         human.info();
-        human.doIt(2, terrain.SWAMP);
-        human.takeATransport(transport.CAR);
-    run(2, terrain.SWAMP);
-        human.doIt(2, terrain.DEEPFOREST);*/
+        human.doIt(2, Terrain.SWAMP);
+        human.takeATransport(Transport.CAR);
+    run(2, Terrain.SWAMP);
+        human.doIt(2, Terrain.DEEPFOREST);*/
 
 
 }
