@@ -1,9 +1,7 @@
 package ru.preminin.homeworks.homework9;
 
-import ru.preminin.homeworks.homework9.enums.Terrain;
-import ru.preminin.homeworks.homework9.enums.Transport;
+import ru.preminin.homeworks.homework9.enums.*;
 import ru.preminin.homeworks.homework9.human.Human;
-import ru.preminin.homeworks.homework9.transport.*;
 
 /**
  * Описание/Пошаговая инструкция выполнения домашнего задания:
