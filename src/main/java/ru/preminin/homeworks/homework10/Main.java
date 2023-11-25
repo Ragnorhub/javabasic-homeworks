@@ -25,7 +25,7 @@ public class Main {
         verifyArray(arr1);
         verifyArray(arr2);
     }
-public static void verifyArray(String[][] arr) throws RuntimeException {
+public static void verifyArray(String[][] arr) {
     try {
         System.out.println(sumOfArrayElements(arr));
     } catch (AppArrayDataException | AppArraySizeException ex) {
