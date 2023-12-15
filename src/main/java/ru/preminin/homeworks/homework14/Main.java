@@ -47,5 +47,3 @@ public class Main {
         file.printFile(fileName);
     }
 }
-
-

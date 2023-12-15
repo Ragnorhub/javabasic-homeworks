@@ -9,17 +9,15 @@ import java.nio.charset.StandardCharsets;
 
 public class FileCommandHandler {
 
-    public void createFile(String fileName, String data, boolean write) {
-        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(fileName, write))) {
+    public void createFile(String fileName, String data, boolean append) {
+        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(fileName, append))) {
             byte[] buffer = data.getBytes(StandardCharsets.UTF_8);
-            for (int i = 0; i < buffer.length; i++) {
-                out.write(buffer[i]);
-            }
+                out.write(buffer);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
     public void printFile(String fileName) {
         try (InputStreamReader in = new InputStreamReader(new FileInputStream(fileName))) {
             int n = in.read();
