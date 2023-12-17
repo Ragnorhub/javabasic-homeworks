@@ -16,9 +16,9 @@ public class Main {
         phoneBook.add("Vlad", "+74953579754");
         phoneBook.add("Vlad", "+74953574542");
         System.out.println(phoneBook);
-        phoneBook.find("Nata");
-        phoneBook.find("Vlad");
-        phoneBook.find("Drtg");
+        System.out.println(phoneBook.find("Nata"));
+        System.out.println(phoneBook.find("Vlad"));
+        System.out.println(phoneBook.find("Drtg"));
         phoneBook.containsPhoneNumber("+74953579754");
     }
 }
