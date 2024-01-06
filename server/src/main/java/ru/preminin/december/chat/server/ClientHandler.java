@@ -30,17 +30,17 @@ public class ClientHandler {
             try {
                 while (true) {
                     String message = in.readUTF();
-                    String[] messageSplit = message.split(" ",3);
+                    String[] messageSplit = message.split(" ", 3);
                     if (message.startsWith("/")) {
                         if (message.equals("/exit")) {
                             break;
                         }
                         if (message.startsWith("/w ")) {
-                            server.sendPrivateMessage(this , messageSplit[1], messageSplit[2]);
+                            server.sendPrivateMessage(this, messageSplit[1], messageSplit[2]);
+                            continue;
                         }
-                    } else {
-                        server.broadcastMessage(userName + " : " + message);
                     }
+                    server.broadcastMessage(userName + " : " + message);
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
