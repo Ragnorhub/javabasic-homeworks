@@ -9,6 +9,11 @@ import java.util.List;
 public class Server {
     private int port;
     private List<ClientHandler> clients;
+    private UserService userService;
+
+    public UserService getUserService() {
+        return userService;
+    }
 
     public Server(int port) {
         this.port = port;
@@ -18,10 +23,12 @@ public class Server {
     public void start() {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.printf("Сервер запущен на порту: %d. Ожидание подключения клиентов.\n", port);
+            userService = new InMemoryUserService();
+            System.out.println("Запущен сервис для работы с пользователями.");
             while (true) {
                 Socket socket = serverSocket.accept();
                 try {
-                    subscribe(new ClientHandler(this, socket));
+                    new ClientHandler(this, socket);
                 } catch (IOException e) {
                     e.printStackTrace();
                     System.out.println("failed to connect the client");
@@ -40,12 +47,21 @@ public class Server {
 
     public synchronized void subscribe(ClientHandler clientHandler) {
         clients.add(clientHandler);
-        System.out.println("Connected " + clientHandler.getUserName());
+        broadcastMessage("Connected " + clientHandler.getUserName());
     }
 
     public synchronized void unsubscribe(ClientHandler clientHandler) {
         clients.remove(clientHandler);
-        System.out.println("Disconnected " + clientHandler.getUserName());
+        broadcastMessage("Disconnected " + clientHandler.getUserName());
+    }
+
+    public synchronized boolean isUserBusy(String username) {
+        for (ClientHandler c : clients) {
+            if (c.getUserName().equals(username)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public synchronized void sendPrivateMessage(ClientHandler sender, String receivedUserName, String message) {
@@ -56,5 +72,12 @@ public class Server {
             }
         }
     }
-
+    public synchronized ClientHandler findUser(String user) {
+        for (ClientHandler client : clients) {
+            if (client.getUserName().equals(user)) {
+                return client;
+            }
+        }
+        return null;
+    }
 }
