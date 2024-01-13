@@ -94,7 +94,7 @@ public class ClientHandler {
                             continue;
                         }
                         if (message.startsWith("/kick ") && server.getUserService().getUserRoleByName(this.userName).equals("ADMIN")) {
-                            disconnect(server.findUser(messageSplit[1]));
+                            server.unsubscribe(server.findUser(messageSplit[1]));
                             continue;
                         }
                     }
